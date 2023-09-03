@@ -1,0 +1,54 @@
+# Scan this file for changes every 30 seconds
+refresh_rate: 30 seconds
+
+appenders:
+  stdout:
+    kind: console
+
+  echo:
+    kind: rolling_file
+    path: "/var/log/echo/echo.log"
+    encoder:
+      kind: pattern
+      pattern: "{d} {l} {t} - {m}{n}"
+    policy:
+      kind: compound
+      trigger:
+        kind: size
+        limit: 100mb
+      roller:
+        kind: fixed_window
+        base: 1
+        count: 10
+        pattern: "/var/log/echo/echo.{}.log"
+
+  echo-session:
+    kind: rolling_file
+    path: "/var/log/echo/echo-session.log"
+    encoder:
+      kind: json
+    policy:
+      kind: compound
+      trigger:
+        kind: size
+        limit: 10mb
+      roller:
+        kind: fixed_window
+        base: 1
+        count: 10
+        pattern: "/var/log/echo/echo-session.{}.log"
+
+
+root:
+  level: debug
+  appenders:
+    - stdout
+    - echo
+
+loggers:
+  echo::mlog::echo::session:
+    level: info
+    appenders:
+      - echo
+      - echo-session
+    additive: false

@@ -1,0 +1,99 @@
+#parallel-compiler = true
+
+[package]
+name = "vsvr"
+version = "0.1.0"
+authors = ["vsvr"]
+edition = "2021"
+
+[dependencies]
+git-version = "0.3.4"
+
+config = "0.10"
+#config = "0.13.3"
+
+log = "^0.4"
+log4rs = "1.2.0"
+
+thiserror = "^1.0"
+anyhow = "^1.0"
+rand = "0.8.5"
+bytes = { version = "1.4.0", features = ["serde"] }
+serde = { version = "^1.0", features = ["derive"] }
+serde_json = "1.0.91"
+json = "0.12.4"
+
+
+actix-web = "4.3.0"
+actix-rt = "2.8.0"
+actix-service = "2.0.2"
+actix-web-httpauth = "0.8.0"
+actix-session = "0.7.2"
+#actix-redis = { version = "0.12.0", features = ["web"] }
+actix-cors = "0.6.4"
+
+port_scanner = "0.1.5"
+
+duration-string = "0.2.0"
+
+chrono={ version="0.4.23", features=["serde"] }
+
+#############################
+# tokio - v0.2.25
+#############################
+# actix-web = "3.0.2"
+# actix-rt = "1.0.0"
+# actix-service = "1.0.6"
+# actix-web-httpauth = "0.5.0"
+# actix-session = "0.4.0"
+# actix-redis = { version = "0.9.1", features = ["web"] }
+# actix-cors = "0.5.3"
+#actix-web.workspace = true
+
+
+
+
+adts-reader = "0.3.0"
+public-ip = "0.1.0"
+#public-ip = "0.2.2"
+
+execute = "0.2.11"
+
+lazy_static="1.4.0"
+
+strum = { version = "0.24", features = ["derive"] }
+strum_macros = "0.24"
+
+redis = "0.17"
+#reqwest = { version = "0.10", features = ["json"] }
+reqwest = { version = "0.11.14", features = ["json"] }
+jsonwebtoken="7"
+
+
+#redis = "0.22.3"
+#redis = { verson = "0.22.3", features = ["r2d2", "aio"], optional=true }
+#redis-async="0.14.2"
+
+# [dependencies.redis] 
+#  version = "0.22.3" 
+#  features = ["r2d2", "aio"] 
+#  optional = true
+
+[dependencies.tokio]
+#for Child.try_wait()
+version = "1.25.0"
+#meari
+#version = "0.2.21"
+#version = "1.25.0"
+#default-features = false
+#features = ["rt-core", "stream", "sync", "time", "io-util", "fs", "macros", "process"]
+features = ["full", "io-util", "sync", "time", "io-util", "fs", "macros", "process"]
+
+
+[dependencies.uuid]
+version = "1.2.2"
+features = [
+    "v4",                # Lets you generate random UUIDs
+    "fast-rng",          # Use a faster (but still sufficiently random) RNG
+    "macro-diagnostics", # Enable better diagnostics for compile-time UUIDs
+]
